@@ -612,7 +612,8 @@ class Spyc {
 
     if ($is_quoted) {
       $value = str_replace('\n', "\n", $value);
-      if ($first_character == "'")
+     $value = str_replace("\\\\", "\\", $value); 
+     if ($first_character == "'")
         return strtr(substr ($value, 1, -1), array ('\'\'' => '\'', '\\\''=> '\''));
       return strtr(substr ($value, 1, -1), array ('\\"' => '"', '\\\''=> '\''));
     }
